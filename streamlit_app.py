@@ -1,10 +1,19 @@
 import streamlit as st
 from google.cloud import firestore
+from firebase_admin import auth
 
 def login():
-    st.write("hello")
+
+    user = auth.create_user(
+    email='ame.ibrahim@yahoo.com',
+    password='lola1313',
+    display_name='Ibrahim Ame',
+    )
+    
+    print('Sucessfully created new user: {0}'.format(user.uid))
 
 
+default_app = firebase_admin.initialize_app()
 
 # Authenticate to Firestore with the JSON account key.
 db = firestore.Client.from_service_account_json("key.json")
@@ -23,7 +32,10 @@ results = doc.to_dict()
 st.title("Login")
 st.text_input("Email", value="", placeholder="Enter Email")
 st.text_input("Password", value="", type="password", placeholder="Enter Password")
-st.button("Login", on_click=login())
+loginButton = st.button("Login")
+
+if loginButton:
+    login()
 
 st.write("name: ", results["name"])
 st.write("age: ", results["age"])
