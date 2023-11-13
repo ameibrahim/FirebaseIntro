@@ -13,6 +13,5 @@ doc = doc_ref.get()
 # Let's see what we got!
 st.write("The id is: ", doc.id)
 
-results = doc.to_dict()
-st.write("name: ", doc.to_dict())
-st.write("age: ", results)
+results = { el.id: el.to_dict() for el in doc }
+st.write("results: ", results)
