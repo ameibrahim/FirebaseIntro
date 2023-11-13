@@ -1,23 +1,19 @@
 import streamlit as st
-from google.cloud import firestore
 import firebase_admin
 from firebase_admin import credentials
+from firebase_admin import firestore
 
+# Authenticate to Firestore with the JSON account key.
 cred = credentials.Certificate("key.json")
 firebase_admin.initialize_app(cred)
 
-# Authenticate to Firestore with the JSON account key.
+
 db = firestore.client()
 
 
 def login():
 
-    user = auth.create_user(
-    email='ame.ibrahim@yahoo.com',
-    password='lola1313',
-    display_name='Ibrahim Ame',
-    )
-
+    user = auth.create_user(email='ame.ibrahim@yahoo.com',password='lola1313',display_name='Ibrahim Ame')
     print('Sucessfully created new user: {0}'.format(user.uid))
 
 
