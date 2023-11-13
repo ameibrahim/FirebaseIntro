@@ -14,5 +14,5 @@ doc = doc_ref.get()
 st.write("The id is: ", doc.id)
 
 results = doc.to_dict()
-st.write("name: ", results[name])
-st.write("age: ", results[age])
+st.write("name: ", results['name'])
+st.write("age: ", results['age'])
