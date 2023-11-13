@@ -1,6 +1,14 @@
 import streamlit as st
 from google.cloud import firestore
-from firebase_admin import auth
+import firebase_admin
+from firebase_admin import credentials
+
+cred = credentials.Certificate("key.json")
+firebase_admin.initialize_app(cred)
+
+# Authenticate to Firestore with the JSON account key.
+db = firestore.client()
+
 
 def login():
 
@@ -9,14 +17,9 @@ def login():
     password='lola1313',
     display_name='Ibrahim Ame',
     )
-    
+
     print('Sucessfully created new user: {0}'.format(user.uid))
 
-
-default_app = firebase_admin.initialize_app()
-
-# Authenticate to Firestore with the JSON account key.
-db = firestore.Client.from_service_account_json("key.json")
 
 # Create a reference to the Google post.
 doc_ref = db.collection("pets").document("IEv3ovpXUgDTC0nIr307")
