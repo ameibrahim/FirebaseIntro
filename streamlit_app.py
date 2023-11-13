@@ -5,7 +5,7 @@ from firebase_admin import firestore
 
 # Authenticate to Firestore with the JSON account key.
 cred = credentials.Certificate("key.json")
-firebase_admin.initialize_app(cred,"Mine")
+firebase_admin.initialize_app(cred)
 
 
 db = firestore.client()
