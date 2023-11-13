@@ -2,6 +2,7 @@ import streamlit as st
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from firebase_admin import auth
 
 # Authenticate to Firestore with the JSON account key.
 if not firebase_admin._apps:
